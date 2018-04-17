@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata|Montserrat:200,300,400');
 
 /* TEXT STYLES */
-h1 {
+h1, h2, h3, h4, h5, h6{
   font-family: 'Inconsolata';
+}
+
+h1 {
   font-size: 2rem;
 }
 
+h2 {
+  font-size: 1.8rem;
+}
+
+p {
+  font-family: 'Montserrat';
+  font-weight: 200;
+  font-size: 0.5rem;
+}
 /* CLASS STYLES */
 .left {
   float: left;
