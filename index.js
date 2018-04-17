@@ -10,4 +10,5 @@ const app = express();
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
   // Routes
-  app.get('/', (req, res) => res.render('pages/index'))
+  app.get('/', (req, res) => res.render('pages/index'));
+  // app.get('/sketches/1', (req, res) => res.render('pages/index'));
