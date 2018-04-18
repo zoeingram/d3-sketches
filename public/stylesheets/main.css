@@ -46,17 +46,24 @@ p {
   display: inline;
 }
 
-.block {
-
-}
-
 /* ELEMENT STYLES */
 [id="nav"] {
   margin-top: 1%;
 }
+
 [id=sketches] {
   text-align: center;
 }
+
 [id=home] {
   font-size: 2rem;
+}
+
+[id=axisOne] path, line {
+  stroke: gray;
+}
+
+[id=axisOne] text {
+  fill: gray;
+  font-family: monospace;
 }
