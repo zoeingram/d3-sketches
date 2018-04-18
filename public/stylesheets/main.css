@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata|Montserrat:200,300,400');
 
 /* TEXT STYLES */
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, a{
   font-family: 'Inconsolata';
 }
 
@@ -11,6 +11,21 @@ h1 {
 
 h2 {
   font-size: 1.8rem;
+}
+
+a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #32e3ef;
+}
+
+a:visited {
+  color: #32e3ef;
+}
+
+a:hover {
+  background: #32e3ef;
+  color: white;
 }
 
 p {
@@ -31,7 +46,14 @@ p {
   display: inline;
 }
 
+.block {
+
+}
+
 /* ELEMENT STYLES */
 [id="nav"] {
   margin-top: 1%;
+}
+[id=sketches] {
+  text-align: center;
 }
