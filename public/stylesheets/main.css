@@ -16,22 +16,25 @@ h2 {
 a {
   font-size: 1.5rem;
   text-decoration: none;
-  color: rgb(66, 100, 220);
+  color: black);
 }
 
 a:visited {
-  color:  rgb(66, 100, 220);
+  color: black;
 }
 
 a:hover {
-  background:  rgb(66, 100, 220);
-  color: white;
+  color:  rgb(66, 150, 220);
 }
 
 p {
   font-family: 'Montserrat';
   font-weight: 200;
   font-size: 0.5rem;
+}
+button {
+  font-family: 'Montserrat';
+  font-weight: 200;
 }
 /* CLASS STYLES */
 .left {
@@ -44,6 +47,11 @@ p {
 
 .inline {
   display: inline;
+}
+
+.title {
+  font-family: 'Inconsolata';
+  font-weight: 200;
 }
 
 /* ELEMENT STYLES */

@@ -53,7 +53,7 @@ svg.selectAll('text')
   .attr('fill', 'white')
   .attr('text-anchor', 'middle');
 
-d3.select('p')
+d3.select('button')
   .on('click', function() {
      dataset = [ 11, 15, 3, 19, 13, 6, 8, 14, 21, 12, 24, 11, 15, 9, 17, 21, 16, 18, 22, 24 ];
 
