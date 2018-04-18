@@ -59,11 +59,13 @@ p {
   font-size: 2rem;
 }
 
-[id=axisOne] path, line {
+[id=axisOne] path, line,
+[id=axisTwo] path, line, {
   stroke: gray;
 }
 
-[id=axisOne] text {
+[id=axisOne] text,
+[id=axisTwo] text {
   fill: gray;
   font-family: monospace;
 }

@@ -1,8 +1,6 @@
-
-
 const w = 500;
 const h = 300;
-const padding = 40;
+const padding = 30;
 const svg = d3.select('#sketch_5')
   .append('svg')
   .attr('width', w)
@@ -27,7 +25,12 @@ let aScale = d3.scaleSqrt()
   .range([0, 10]);
 
 let xAxis = d3.axisBottom()
-  .scale(xScale);
+  .scale(xScale)
+  .tickValues([0, 50, 100, 250, 450, 600]);
+
+let yAxis = d3.axisLeft()
+  .scale(yScale)
+  .ticks(5)
 
 svg.selectAll("circle")
    .data(dataset)
@@ -67,3 +70,8 @@ svg.append("g")
 	.attr("id", "axisOne")
 	.attr("transform", "translate(0," + (h - padding) + ")")
 	.call(xAxis);
+
+svg.append("g")
+	.attr("id", "axisTwo")
+	.attr("transform", "translate(" + padding + ",0)")
+	.call(yAxis);
