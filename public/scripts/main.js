@@ -1,4 +1,4 @@
-const sketchNames = ['Bar Chart', 'Scatter Plot', 'Linear Scale', 'Square Root Scale', 'Time Scale', 'Axes'];
+const sketchNames = ['Bar Chart', 'Scatter Plot', 'Linear Scale', 'Square Root Scale', 'Time Scale', 'Axes', 'Randomized Data Scatterplot'];
 
 
 for (let i = 0; i < sketchNames.length; i++) {

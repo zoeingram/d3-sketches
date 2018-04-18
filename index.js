@@ -17,3 +17,4 @@ const app = express();
   app.get('/sketch_3', (req, res) => res.render('pages/sketch_3'));
   app.get('/sketch_4', (req, res) => res.render('pages/sketch_4'));
   app.get('/sketch_5', (req, res) => res.render('pages/sketch_5'));
+  app.get('/sketch_6', (req, res) => res.render('pages/sketch_6'));
