@@ -13,7 +13,7 @@ const dataset = [
                ];
 const w = 500;
 const h = 300;
-const padding = 40;
+const padding = 20;
 
 const xScale = d3.scaleLinear()
   .domain([0, d3.max(dataset, function(d) {
@@ -67,7 +67,7 @@ const yScale = d3.scaleLinear()
       return d[0] + ',' + d[1];
     })
     .attr('x', function(d){
-      return xScale(d[0]) + 20 ;
+      return xScale(d[0]) ;
     })
     .attr('y', function(d){
       return yScale(d[1]);

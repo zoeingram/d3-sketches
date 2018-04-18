@@ -15,3 +15,4 @@ const app = express();
   app.get('/sketch_1', (req, res) => res.render('pages/sketch_1'));
   app.get('/sketch_2', (req, res) => res.render('pages/sketch_2'));
   app.get('/sketch_3', (req, res) => res.render('pages/sketch_3'));
+  app.get('/sketch_4', (req, res) => res.render('pages/sketch_4'));
