@@ -1,7 +1,7 @@
 const w = 500;
 const h = 300;
 const padding = 30;
-const svg = d3.select('#sketch_5')
+const svg = d3.select('#sketch_6')
   .append('svg')
   .attr('width', w)
   .attr('height', h);

@@ -6,9 +6,11 @@ for (let i = 0; i < sketchNames.length; i++) {
     sketchDiv.id = 'sketch_' + i + '';
     sketchDiv.className = 'two columns';
 
+
     let sketchTitle = document.createElement('a');
     sketchTitle.innerHTML = sketchNames[i];
     sketchTitle.href = '/sketch_' + i + '';
     sketchDiv.appendChild(sketchTitle);
+    
     document.getElementById('sketches').appendChild(sketchDiv);
 }
