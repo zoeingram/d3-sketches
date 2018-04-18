@@ -16,15 +16,15 @@ h2 {
 a {
   font-size: 1.5rem;
   text-decoration: none;
-  color: #32e3ef;
+  color: rgb(66, 100, 220);
 }
 
 a:visited {
-  color: #32e3ef;
+  color:  rgb(66, 100, 220);
 }
 
 a:hover {
-  background: #32e3ef;
+  background:  rgb(66, 100, 220);
   color: white;
 }
 

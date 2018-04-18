@@ -1,14 +1,14 @@
-const sketchNames = ['Bar Chart', 'Scatter Plot', 'Linear Scales'];
+const sketchNames = ['Bar Chart', 'Scatter Plot', 'Linear Scale', 'Square Root Scale'];
 
 
 for (let i = 0; i < sketchNames.length; i++) {
     let sketchDiv = document.createElement('div');
     sketchDiv.id = 'sketch_' + i + '';
-    sketchDiv.className = 'four columns';
+    sketchDiv.className = 'three columns';
 
     let sketchTitle = document.createElement('a');
     sketchTitle.innerHTML = sketchNames[i];
-    sketchTitle.href = '/sketches/sketch_' + i + '';
+    sketchTitle.href = '/sketch_' + i + '';
     sketchDiv.appendChild(sketchTitle);
     document.getElementById('sketches').appendChild(sketchDiv);
 }
