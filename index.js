@@ -20,3 +20,4 @@ const app = express();
   app.get('/sketch_6', (req, res) => res.render('pages/sketch_6'));
   app.get('/sketch_6', (req, res) => res.render('pages/sketch_6'));
   app.get('/sketch_7', (req, res) => res.render('pages/sketch_7'));
+  app.get('/sketch_8', (req, res) => res.render('pages/sketch_8'));

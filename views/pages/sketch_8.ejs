@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>sketch_8</title>
+
+    <% include ../partials/header.ejs %>
+  </head>
+  <body>
+    <div class="container">
+      <% include ../partials/nav.ejs %>
+  </body>
+</html>
+
+
+<div class="row">
+  <div class="twelve columns">
+    <h2>sketch_8 | Force Part I</h2>
+    <p>d3's force layout offers <em>'insights between the relationships between connections'.</em> It connects nodes through 'links'. When data is passed in, the force layout calculates the necessary positions to display the data in an ingestible way.</p>
+    <a href="https://medium.com/@sxywu/understanding-the-force-ef1237017d5">Shirley Wu's Post on Force</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="six columns" id="sketch_8">
+    <svg width=600 height=600></svg>
+  </div>
+
+
+  <div class="six columns">
+    <pre><code>
+      let svg = d3.select("svg"),
+          width = + svg.attr("width"),
+          height = + svg.attr("height"),
+          color =  d3.scaleOrdinal() // Define ordinal scale for colors per specific node
+            .domain(['a', 'b', 'c'])
+            .range(['#4296dc', '#42fadc', '#42c8dc']);
+
+
+      let a = {id: "a"},
+          b = {id: "b"},
+          c = {id: "c"},
+          nodes = [a, b, c],
+          links = [];
+      console.log(a)
+      var simulation = d3.forceSimulation(nodes)
+          .force("charge", d3.forceManyBody().strength(-1000))
+          .force("link", d3.forceLink(links).distance(200))
+          .force("x", d3.forceX())
+          .force("y", d3.forceY())
+          .alphaTarget(1)
+          .on("tick", ticked);
+
+      var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"),
+          link = g.append("g").attr("stroke", "#c7cbcc").attr("stroke-width", 1.5).selectAll(".link"),
+          node = g.append("g").attr("stroke", "#fff").attr("stroke-width", 1.5).selectAll(".node");
+
+      restart();
+
+      d3.timeout(function() {
+        links.push({source: a, target: b}); //  a-b
+        links.push({source: b, target: c}); //  b-c
+        links.push({source: c, target: a}); //  c-a
+        restart();
+      }, 1000);
+
+      d3.interval(function() {
+        nodes.pop(); // Remove c
+        links.pop(); // Remove c-a
+        links.pop(); // Remove b-c
+        restart();
+      }, 2000, d3.now());
+
+      d3.interval(function() {
+        nodes.push(c); // Re-add c
+        links.push({source: b, target: c}); // Re-add b-c
+        links.push({source: c, target: a}); // Re-add c-a
+        restart();
+      }, 2000, d3.now() + 1000);
+
+      function restart() {
+
+        // Apply the general update pattern to the nodes.
+        node = node.data(nodes, function(d) { return d.id;});
+        node.exit().remove();
+        node = node.enter().append("circle").attr("fill", function(d) { return color(d.id); }).attr("r", 8).merge(node);
+        // Apply the general update pattern to the links.
+        link = link.data(links, function(d) { return d.source.id + "-" + d.target.id; });
+        link.exit().remove();
+        link = link.enter().append("line").merge(link);
+
+        // Update and restart the simulation.
+        simulation.nodes(nodes);
+        simulation.force("link").links(links);
+        simulation.alpha(1).restart();
+      }
+
+      function ticked() {
+        node.attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; })
+
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+      }
+
+
+
+    </code></pre>
+  </div>
+</div>
+<script src="/scripts/sketches/sketch_8.js"></script>
