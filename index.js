@@ -11,6 +11,7 @@ const app = express();
 
   // Routes
   app.get('/', (req, res) => res.render('pages/index'));
+  app.get('/info', (req, res) => res.render('pages/info'));
   app.get('/sketch_0', (req, res) => res.render('pages/sketch_0')); // fix this
   app.get('/sketch_1', (req, res) => res.render('pages/sketch_1'));
   app.get('/sketch_2', (req, res) => res.render('pages/sketch_2'));

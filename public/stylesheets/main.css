@@ -63,7 +63,7 @@ button {
   text-align: center;
 }
 
-[id=home] {
+[id=home], [id=info] {
   font-size: 2rem;
 }
 
