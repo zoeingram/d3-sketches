@@ -1,0 +1,93 @@
+{
+  "id": "10152242106771890",
+  "name": "Zoë Ingram",
+  "friends": {
+    "data": [
+      {
+        "name": "Bikram Virk",
+        "id": "12818260"
+      },
+      {
+        "name": "Matthias Nikaj",
+        "id": "517796313"
+      },
+      {
+        "name": "Carlos Reyes",
+        "id": "10152691962692219"
+      },
+      {
+        "name": "Ellis Marte",
+        "id": "10152296206351498"
+      },
+      {
+        "name": "Nabeel Gillani",
+        "id": "10152604033897026"
+      },
+      {
+        "name": "Jennifer Pro Gilbert",
+        "id": "645231334"
+      },
+      {
+        "name": "João Azevedo",
+        "id": "648986285"
+      },
+      {
+        "name": "Eugene Joonsup So",
+        "id": "10152632591752074"
+      },
+      {
+        "name": "Ben Hsieh",
+        "id": "706870481"
+      },
+      {
+        "name": "Marshall Hattersley",
+        "id": "10203890053505391"
+      },
+      {
+        "name": "Gucci Mane",
+        "id": "10204416435468026"
+      },
+      {
+        "name": "Julian Bouma",
+        "id": "10204255457726256"
+      },
+      {
+        "name": "Sasha Goldenson",
+        "id": "10204538477644232"
+      },
+      {
+        "name": "Cara Kessler",
+        "id": "1341480226"
+      },
+      {
+        "name": "Alex Mitchell",
+        "id": "1424296262"
+      },
+      {
+        "name": "Colin Cooke",
+        "id": "4313796099999"
+      },
+      {
+        "name": "Akshay Chalana",
+        "id": "698664146841748"
+      },
+      {
+        "name": "Adam Heins",
+        "id": "100001718065646"
+      },
+      {
+        "name": "Minsoo Thigpen",
+        "id": "500808470064692"
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "before": "QVFIUm1CZAG9ZANExaUHN6ck5Ja2F0dWVtUHF6eGx0UGhtanMwd2NqaGY2NVRGbG51U0dOcTNzN2U5SldDMmpXRE1HYUMZD",
+        "after": "QVFIUmhrZA1ZA1NGFUTGpOcGNGWERSaXhUeUxZAcEhMNy1tRDFZAMnVISHBEUmh4OVhkVkF1b0dJUmlNMC15RzR3UjRBWlhvd2FCTG82ZAmlOaDB2QS1WT2YtRFNn"
+      }
+    },
+    "summary": {
+      "total_count": 1095
+    }
+  }
+}

@@ -44,7 +44,6 @@ d3.interval(function() {
 
 d3.interval(function() {
   nodes.push(c); // Re-add c
-  nodes.push(d); // Re-add c
   links.push({source: b, target: c}); // re add b-c
   links.push({source: c, target: a}); // re add c-a
   restart();
@@ -53,6 +52,7 @@ d3.interval(function() {
 function restart() {
 
   // apply the  update pattern to the nodes
+  console.log(node, 'node')
   node = node.data(nodes, function(d) { return d.id;});
   node.exit().remove();
   node = node.enter().append('circle').attr('fill', function(d) { return color(d.id); }).attr('r', 8).merge(node);
