@@ -14,8 +14,6 @@ d3.json('../../data/friendList1.json', function(data) {
   update(source);
 });
 
-
-
 function update(source) {
   let friendsList = source.friends.data;
   let userId = source.id;
