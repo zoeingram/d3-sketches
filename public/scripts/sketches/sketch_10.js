@@ -4,46 +4,64 @@ let svg = d3.select('svg'),
     color;
 let nodes = [],
     links = [];
-let i = 0;
 
 let source;
 let colorsArray = [];
+let parsedData = [];
 
-// d3.queue(2) // set concurrency of request
-//   .defer(d3.json, "../../data/friendList1.json")
-//   .defer(d3.json, "../../data/friendList2.json")
-//   .awaitAll(ready);
-//
-// function ready(error, results) {
-//   if (error) throw error;
-// }
+d3.queue(2) // set concurrency of request
+  .defer(d3.json, "../../data/friendList1.json")
+  .defer(d3.json, "../../data/friendList2.json")
+  .awaitAll(ready);
 
-d3.json('../../data/friendList1.json', function(data) {
-  source = data;
-  update(source);
-});
+function ready(error, results) {
+  if (error) throw error;
+
+  for(let i = 0; i < results.length; i++) {
+    let userNode = {
+      id: results[i].id,
+      name: results[i].name,
+      type: 'user'
+    }
+    cleanData(results[i], userNode)
+  }
+  generateDiagrams(parsedData)
+}
 
 
 
- d3.json('../../data/friendList2.json', function(data) {
-  source = data;
-});
+function generateDiagrams(parsedData) {
+  update(parsedData)
+}
 
-
-function update(source) {
+function cleanData(source, userNode) {
+  let currentData = [];
   let friendsList = source.friends.data;
-  let userId = source.id;
-  let userName = source.name;
-   for (let i = 0; i < friendsList.length; i++) {
-     nodes[i] = friendsList[i];
-   }
+  for (let i = 0; i < friendsList.length; i++) { // Push all friend nodes after
+    currentData.push({
+      id: source.friends.data[i].id,
+      name: source.friends.data[i].name,
+      type: 'friend'
+    });
+  }
+  currentData.unshift(userNode);
+  for (let i = 0; i < currentData.length; i++) { // assign all friend nodes to be sourced from the user
+    currentData[i].source = userNode.name;
+    currentData[i].target = currentData[i].name;
+  }
+  parsedData.push(currentData);
+  parsedData = [].concat.apply([], parsedData);
+}
 
-   nodes.unshift({name: userName, id: userId});
-   generateColors()
+
+
+function update(parsedData) {
+   nodes = parsedData
+   generateColors();
 
    let simulation = d3.forceSimulation(nodes)
-       .force('charge', d3.forceManyBody().strength(-500))
-       .force('link', d3.forceLink(links).distance(200))
+       .force('charge', d3.forceManyBody())
+       .force('link', d3.forceLink(links).distance(300))
        .force('x', d3.forceX())
        .force('y', d3.forceY())
        .alphaTarget(1)
@@ -55,38 +73,27 @@ function update(source) {
 
 
      let g = svg.append('g').attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')'),
-         link = g.append('g').attr('stroke', '#c7cbcc').attr('stroke-width', 1.5).selectAll('.link'),
-         node = g.append('g').attr('stroke', '#fff').attr('stroke-width', 1.5).selectAll('.node');
+         link = g.append('g').attr('stroke', '#000').attr('stroke-width', 0.1).selectAll('.link'),
+         node = g.append('g').selectAll('.node');
          name = g.append('g').attr('font-family', 'monospace').attr('font-size', '11px').attr('fill', 'gray')
     restart();
 
     d3.timeout(function() {
+      let sourceNode;
       for (i = 0; i < nodes.length; i++) {
-        links.push({source: nodes[0], target: nodes[i]}); // my node to my first friend's node
+        if (nodes[i].type == 'user') {
+          sourceNode = nodes[i];
+        }
+        links.push({source: sourceNode, target: nodes[i]}); // my node to my first friend's node
       }
       restart();
     }, 1000);
 
 
-    function generateColors() {
-      let g = 100;
-      let colorGen;
-
-      for (let j = 0; j < nodes.length; j++) {
-        colorGen = rgbToHex(100, g, 220);
-        colorsArray.push(colorGen);
-        j++;
-        g+=10;
-      }
-    }
-
-
     function restart() {
-
       node = node.data(nodes, function(d) { return d.id });
-
       node.exit().remove();
-      node = node.enter().append('circle').attr('fill', function(d) { return color(d.id)}).attr('r', 8).merge(node)
+      node = node.enter().append('circle').attr('fill', function(d) { return color(d.id)}).attr('r', 3).merge(node)
 
       link = link.data(links, function(d) { return d.source.id + '-' + d.target.id });
       link = link.enter().append('line').merge(link);
@@ -98,6 +105,7 @@ function update(source) {
       simulation.alpha(1).restart();
 
     }
+
 
 
     function ticked() {
@@ -112,6 +120,20 @@ function update(source) {
     }
 
 } // end update
+
+
+
+    function generateColors() {
+      let g = 100;
+      let colorGen;
+
+      for (let j = 0; j < nodes.length; j++) {
+        colorGen = rgbToHex(100, g, 220);
+        colorsArray.push(colorGen);
+        j++;
+        g+=10;
+      }
+    }
 
 function componentToHex(c) {
   let hex = c.toString(16);
